@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RedStore - Simple E-commerce Demo</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/images/download.jpg" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="wrap-logo" id="main-logo">
+    <img class="logo-img" src="./images/herobanner.png" alt="RedStore logo" width="50" />
+    <h1>
+      
+      RedStore
+    </h1>
+</div>
+    <div class="back-nav" id="back-nav" style="display: none;">
+      <button class="back-btn" id="back-btn">
+        <span class="back-icon">←</span>
+        <span class="back-text">Back</span>
+      </button>
+    </div>    <div class="header-actions">
+      <span class="nav-heading" id="products-nav-btn" style="display: none;">Products</span>
+      
+      <div class="auth-buttons" id="auth-buttons">
+        <button id="login-btn" class="auth-btn">Login</button>
+      </div>
+      <div class="user-menu" id="user-menu" style="display: none;">
+        <span id="user-name"></span>
+        <button id="logout-btn" class="auth-btn">Logout</button>
+      </div>
+      
+      <div class="cart-icon" id="cart-icon">
+        🛒 <span id="cart-count">0</span>
+      </div>
+    </div>
+  </header>  
+  <div class="homepage" id="homepage">
+
+  </div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Welcome to RedStore</h1>
+          <p class="hero-subtitle">Discover millions of products with fast delivery</p>
+          <button class="cta-btn prime" id="shop-now-btn">Shop Now</button>
+        </div>
+        <div class="hero-image">
+          <img 
+            src="./images/herobanner.png"
+            alt="RedStore banner"
+            onerror="this.src='https://via.placeholder.com/600x400/ff4d4d/ffffff?text=RedStore'"
+          >
+        </div>
+      </div>
+    </div>
+    
+    <div class="quick-categories">
+      <div class="container">
+        <h2>Shop by Category</h2>
+        <div class="category-grid">
+          <div class="quick-category" data-category="men">
+            <div class="category-icon">👕</div>
+            <h3>Men's Fashion</h3>
+            <p>Clothing & Accessories</p>
+          </div>
+          <div class="quick-category" data-category="women">
+            <div class="category-icon">👗</div>
+            <h3>Women's Fashion</h3>
+            <p>Dresses & Shoes</p>
+          </div>
+          <div class="quick-category" data-category="kids">
+            <div class="category-icon">🧸</div>
+            <h3>Kids & Baby</h3>
+            <p>Toys & Clothing</p>
+          </div>
+          <div class="quick-category" data-category="electronics">
+            <div class="category-icon">📱</div>
+            <h3>Electronics</h3>
+            <p>Phones & Gadgets</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="featured-section">
+      <div class="container">
+        <h2>Today's Deals</h2>
+        <div class="deals-grid" id="deals-grid">
+        </div>
+      </div>
+    </div>
+
+    <div class="prime-section">
+      <div class="container">        <div class="prime-card">
+          <div class="prime-content">
+            <h2>RedStore Prime</h2>
+            <p>Fast, FREE delivery on millions of items, plus exclusive deals</p>
+            <ul class="prime-benefits">
+              <li>✓ FREE One-Day Delivery</li>
+              <li>✓ Exclusive Prime Deals</li>
+              <li>✓ Early Access to Sales</li>
+              <li>✓ Prime Video Streaming</li>
+            </ul>
+            <button class="prime-btn">Try Prime Free for 30 Days</button>
+          </div>
+        </div>
+      </div>
+    </div>
+        
+    <div class="features-section">
+      <div class="container">
+        <div class="features">
+          <div class="feature">
+            <span class="feature-icon">🚚</span>
+            <h3>Free Delivery</h3>
+            <p>Free shipping on all orders above ₹999</p>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">💳</span>
+            <h3>Secure Payments</h3>
+            <p>Multiple payment options available</p>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">🔄</span>
+            <h3>Easy Returns</h3>
+            <p>30-day return policy</p>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">⭐</span>
+            <h3>Quality Products</h3>
+            <p>Verified sellers and authentic products</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-content">
+          <h2>Stay Updated</h2>
+          <p>Get the latest deals and offers directly in your inbox</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email" id="newsletter-email">
+            <button class="newsletter-btn">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="products-page" id="products-page" style="display: none;">
+    
+    <nav class="categories" id="categories"></nav>
+  
+    <section class="products" id="products"></section>
+  </div>
+
+  <div class="checkout-page" id="checkout-page" style="display: none;">
+    <div class="container">
+      <h1>Checkout</h1>
+      <div class="checkout-content">
+        <div class="order-summary">
+          <h2>Order Summary</h2>
+          <div id="checkout-items"></div>
+          <div class="total-section">
+            <div class="total-row">
+              <span>Total: ₹<span id="checkout-total">0</span></span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="payment-section">
+          <h2>Payment Method</h2>
+          <div class="payment-options">
+            <label class="payment-option">
+              <input type="radio" name="payment-method" value="cod" checked>
+              <span class="payment-label">Cash on Delivery</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment-method" value="card">
+              <span class="payment-label">Pay with Card</span>
+            </label>
+          </div>
+          
+          <div class="card-form" id="card-form" style="display: none;">
+            <h3>Card Details</h3>
+            <input type="text" id="card-number" placeholder="Card Number" maxlength="19">
+            <div class="card-row">
+              <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5">
+              <input type="text" id="card-cvv" placeholder="CVV" maxlength="3">
+            </div>
+            <input type="text" id="card-name" placeholder="Cardholder Name">
+          </div>
+            <div class="checkout-buttons">
+            <button id="place-order" class="primary-btn">Place Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="success-page" id="success-page" style="display: none;">
+    <div class="container">
+      <div class="success-content">
+        <div class="success-icon">✅</div>
+        <h1>Order Placed Successfully!</h1>
+        <div class="order-details">
+          <h2>Order Details</h2>
+          <div id="success-items"></div>
+          <div class="payment-info">
+            <div class="payment-row">
+              <span>Payment Method:</span>
+              <span id="payment-method-display"></span>
+            </div>
+            <div class="payment-row">
+              <span>Total Amount:</span>
+              <span>₹<span id="success-total">0</span></span>
+            </div>
+            <div class="payment-row" id="cod-amount" style="display: none;">
+              <span>Amount to Pay (Cash on Delivery):</span>
+              <span>₹<span id="cod-total">0</span></span>
+            </div>
+          </div>
+        </div>
+        <button id="continue-shopping" class="primary-btn">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+
+  
+   <aside class="cart-sidebar" id="cart-sidebar">
+    <h2>Cart</h2>
+    <div id="cart-items"></div>
+    <div class="cart-total">Total: ₹<span id="cart-total">0</span></div>
+    <button id="checkout-btn">Checkout</button>
+    <button id="close-cart" class="close-cart-btn">✕</button>
+  </aside>
+  <div class="toast-container" id="toast-container"></div>
+
+  <div class="auth-modal" id="auth-modal">
+    <div class="auth-modal-content">
+      <span class="close-modal" id="close-modal">&times;</span>
+        <div class="auth-form" id="login-form">
+        <h2>Login</h2>
+        <input type="email" id="login-email" placeholder="Email" required>
+        <div class="password-input">
+          <input type="password" id="login-password" placeholder="Password" required>
+          <span class="password-toggle" id="login-password-toggle">👁️</span>
+        </div>
+        <button type="button" id="login-submit">Login</button>
+        <p>Don't have an account? <a href="#" id="show-register">Register here</a></p>
+      </div>      <div class="auth-form" id="register-form" style="display: none;">
+        <h2>Register</h2>
+        <input type="text" id="register-name" placeholder="Full Name" required>
+        <input type="email" id="register-email" placeholder="Email" required>
+        <div class="password-input">
+          <input type="password" id="register-password" placeholder="Password" required>
+          <span class="password-toggle" id="register-password-toggle">👁️</span>
+        </div>
+        <div class="password-input">
+          <input type="password" id="register-confirm" placeholder="Confirm Password" required>
+          <span class="password-toggle" id="register-confirm-toggle">👁️</span>
+        </div>
+        <button type="button" id="register-submit">Register</button>
+        <p>Already have an account? <a href="#" id="show-login">Login here</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
